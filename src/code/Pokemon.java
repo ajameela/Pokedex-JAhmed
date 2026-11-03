@@ -1,5 +1,6 @@
 package code;
 import java.util.Locale;
+import java.util.Objects;
 
 // Raw height is in decimeters; weight is in hectograms.
 public class Pokemon {
@@ -20,11 +21,80 @@ public class Pokemon {
     public String getName() { 
     	return name; 
     }
+    
+    public void setName(String name) {
+    	/*setName() rejects null or blank names 
+    	 and stores a trimmed, lowercase name.*/
+    	
+    	if(name == null || name == "")
+    		return;
+		this.name = name.trim();
+	}
+    
+    public int getId() {
+		return id;
+	}
 
-    @Override
+	public void setId(int id) {
+		if (id < 0)
+			return;
+		this.id = id;
+	}
+
+	public int getHeightDm() {
+		return heightDm;
+	}
+
+	public void setHeightDm(int heightDm) {
+		if (heightDm <= 0)
+			return;
+		this.heightDm = heightDm;
+	}
+
+	public int getWeightHg() {
+		return weightHg;
+	}
+
+	public void setWeightHg(int weightHg) {
+		if (weightHg <= 0)
+			return;
+		this.weightHg = weightHg;
+	}
+
+	public int getBaseExperience() {
+		return baseExperience;
+	}
+
+	public void setBaseExperience(int baseExperience) {
+		if (baseExperience < 0)
+			return;
+		this.baseExperience = baseExperience;
+	}
+
+	@Override
     public String toString() {
         return String.format(Locale.US,
             "#%d %s | Height: %.1f m | Weight: %.1f kg | Base experience: %d",
             id, name, heightDm / 10.0, weightHg / 10.0, baseExperience);
     }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(Integer.valueOf(baseExperience), Integer.valueOf(heightDm), Integer.valueOf(id), name,
+				Integer.valueOf(weightHg));
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pokemon other = (Pokemon) obj;
+		return baseExperience == other.baseExperience && heightDm == other.heightDm && id == other.id
+				&& Objects.equals(name, other.name) && weightHg == other.weightHg;
+	}
+	
 }
