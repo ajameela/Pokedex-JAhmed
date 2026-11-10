@@ -79,6 +79,7 @@ public class ChainingHashTable<K, V> {
     }
 
     // Print every bucket index and the keys in its chain, in order.
+    // Step 7 is extra credit do it!
     public void printTable() {
         // TODO 4: Traverse each bucket and print its keys.
         System.out.println("TODO: printTable");

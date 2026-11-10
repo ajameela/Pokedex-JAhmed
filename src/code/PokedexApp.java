@@ -18,6 +18,12 @@ public class PokedexApp {
             System.out.println("Put pokemon.csv in the project root (working directory).");
             return;
         }
+        
+        //Check 1 - for step 9 in the 1st step (step 9 also extra credit)
+        Pokemon first = new Pokemon (25, "PIKACHU", 4, 60, 112);
+        Pokemon second = new Pokemon (25, "PIKACHU", 4, 60, 112);
+
+        System.out.println("Check quality" + first.equals(second));
 
         Scanner input = new Scanner(System.in);
         boolean running = true;
@@ -83,6 +89,7 @@ public class PokedexApp {
     }
 
     private static void removePokemon(Scanner input) {
+    	// When removing the pokemon this method is similar to the searchPokemon method
         // TODO 3: Complete this menu action.
         System.out.println("TODO: complete this action");
     }
