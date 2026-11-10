@@ -17,7 +17,7 @@ public class Pokemon {
         this.weightHg = weightHg;
         this.baseExperience = baseExperience;
     }
-
+  
     public String getName() { 
     	return name; 
     }

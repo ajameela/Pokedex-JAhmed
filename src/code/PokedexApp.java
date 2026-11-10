@@ -37,13 +37,49 @@ public class PokedexApp {
     }
 
     private static void searchPokemon(Scanner input) {
-        // TODO 1: Complete this menu action.
-        System.out.println("TODO: complete this action");
+        // TODO 1: Complete this menu action. must search for pokemon
+    	//			if pokemon is there then print it out.
+    	// DONE/COMPLETED
+    	
+        System.out.println("Enter in the Pokemon you want to find: ");
+        String name = input.nextLine();
+        
+        Pokemon pokeLookFor = pokedex.get(name);
+        if(pokeLookFor != null) 
+        	System.out.println(pokeLookFor);
+        else
+        	System.out.println("NOT FOUND IN CURRENT LIST, SORRY!");
+        
     }
 
     private static void addOrUpdatePokemon(Scanner input) {
         // TODO 2: Complete this menu action.
-        System.out.println("TODO: complete this action");
+        System.out.println("Enter in the name of the Pokemon you'd like to add: ");
+        String name = input.nextLine();
+        
+        // boolean insert(K key, V value)
+        int id = readNonNegativeInt(input,"Please enter in ID for Pokemon: ");
+        
+        int height = readNonNegativeInt(input, "Please enter height in decimeters: ");
+               
+        int weight = readNonNegativeInt(input, "Please enter weight in hectorgrams: ");
+        
+        int baseExperience = readNonNegativeInt(input, "Enter in the experience level: ");
+        
+        // When constructing, the parameters must be in the same order as the constructor!!!
+        Pokemon newPokemon = new Pokemon(id, name, height, weight, baseExperience);              
+        
+        if(pokedex.get(name) != null)
+        	// if found and does not equal null
+        	// then its already in there and just needs an update.
+        	System.out.println("updating pokemon now");
+        else
+        	System.out.println("inserting pokemon now");
+        
+        // if it exists already, it overrides it. 
+        // if it does NOT exist it makes/creates it
+        pokedex.insert(name, newPokemon);
+       
     }
 
     private static void removePokemon(Scanner input) {
@@ -60,6 +96,7 @@ public class PokedexApp {
                 if (value >= 0) { return value; }
             } catch (NumberFormatException e) {
                 // Explain the error and ask again.
+            	System.out.println("You entered a negative number, uh oh try again: ");
             }
             System.out.println("Enter a whole number of zero or more.");
         }
