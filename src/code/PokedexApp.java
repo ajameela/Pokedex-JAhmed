@@ -60,6 +60,7 @@ public class PokedexApp {
 
     private static void addOrUpdatePokemon(Scanner input) {
         // TODO 2: Complete this menu action.
+    	// DONE/COMPLETE
         System.out.println("Enter in the name of the Pokemon you'd like to add: ");
         String name = input.nextLine();
         
@@ -91,7 +92,19 @@ public class PokedexApp {
     private static void removePokemon(Scanner input) {
     	// When removing the pokemon this method is similar to the searchPokemon method
         // TODO 3: Complete this menu action.
-        System.out.println("TODO: complete this action");
+    	// DONE/COMPLETED
+    	System.out.println("Enter in the Pokemon you want to remove: ");
+        String name = input.nextLine();
+        
+        Pokemon pokeRemove = pokedex.get(name);
+        if(pokeRemove != null) {
+        	System.out.println(name + " was found and removal!");
+        	pokedex.remove(name);
+        }        
+        else
+        	System.out.println("Sorry, " + name + " was NOT found");
+        	
+        	
     }
 
     // Provided: reads a non-negative integer using nextLine(), avoiding leftover newlines.
